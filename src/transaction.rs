@@ -47,10 +47,11 @@ pub struct Transaction<'a> {
 /// committing - i.e., [`OnTransactionDrop::Commit`] - the transaction!
 ///
 /// [1]: https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub enum OnTransactionDrop {
     /// Abort the [`Transaction`] when it is dropped. This is the default
     /// behavior of [`Transaction`].
+    #[default]
     Abort,
     /// Commit the [`Transaction`] when it is dropped. This is the default
     /// behavior of an [`IDBTransaction`][1] in JavaScript.
@@ -87,7 +88,7 @@ impl<'a> Transaction<'a> {
         Self {
             listeners: TxListeners::new(db, inner),
             done: false,
-            on_drop: OnTransactionDrop::Abort,
+            on_drop: OnTransactionDrop::default(),
         }
     }
 
