@@ -166,6 +166,14 @@ impl Drop for Transaction<'_> {
         // Given that the default behavior in JavaScript is to commit the
         // transaction when it is dropped, we only need to perform an action
         // when we want to abort the transaction.
+        //
+        // Typically, it would make sense to explicitly commit the transaction
+        // with `TransactionSys::do_commit` when encountering `OnTransactionDrop::Commit`.
+        // However, for some reason, explicitly committing the transaction causes
+        // tests in a headless Chrome browser to hang, even though they pass in
+        // all other contexts, including a non-headless Chrome browser. So, until
+        // this is resolved, it is best to let `OnTransactionDrop::Commit` be
+        // handled implicitly by the JavaScript runtime.
         if !self.done & matches!(self.on_drop, OnTransactionDrop::Abort) {
             let _ = self.as_sys().abort();
         }
