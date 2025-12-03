@@ -1,5 +1,5 @@
 use cfg_if::cfg_if;
-use indexed_db_futures as idb_fut;
+use matrix_indexed_db_futures as idb_fut;
 
 #[cfg(feature = "_serialise-deserialise-dyn")]
 use wasm_bindgen::prelude::*;

@@ -1,5 +1,5 @@
 use crate::prelude::*;
-use indexed_db_futures::transaction::TransactionFinishKind;
+use matrix_indexed_db_futures::transaction::TransactionFinishKind;
 
 #[wasm_bindgen_test]
 pub async fn complete() {
@@ -28,9 +28,9 @@ pub async fn abort() {
 #[cfg(feature = "async-upgrade")]
 pub mod async_upgrade {
     use crate::prelude::*;
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::error::{Error, JSError, OpenDbError};
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::error::{Error, JSError, OpenDbError};
+    use matrix_indexed_db_futures::transaction::TransactionMode;
     use std::sync::{Arc, Mutex};
 
     const STORE_NAME: &str = "foostore";

@@ -1,4 +1,4 @@
-//! Internal macros for the [indexed_db_futures](https://crates.io/crates/indexed_db_futures) crate. The API is to be
+//! Internal macros for the [matrix_indexed_db_futures](https://crates.io/crates/matrix_indexed_db_futures) crate. The API is to be
 //! considered unstable and subject to breaking changes at any time, although these will follow semver.
 
 #![deny(clippy::correctness, clippy::suspicious)]

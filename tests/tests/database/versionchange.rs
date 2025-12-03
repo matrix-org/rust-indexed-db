@@ -35,7 +35,7 @@ pub async fn stream() {
 }
 
 mod helpers {
-    use indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::database::Database;
     use wasm_bindgen_futures::spawn_local;
 
     pub fn open_v2(db_name: String, version: u8) {

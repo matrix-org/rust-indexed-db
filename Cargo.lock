@@ -285,48 +285,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "indexed_db_futures"
-version = "0.6.4"
-dependencies = [
- "accessory",
- "cfg-if",
- "console_log",
- "delegate-display",
- "derive_more 2.0.1",
- "fancy_constructor",
- "futures",
- "futures-core",
- "impartial-ord",
- "indexed_db_futures_macros_internal",
- "js-sys",
- "log",
- "rand",
- "sealed",
- "serde",
- "serde-wasm-bindgen",
- "smallvec",
- "thiserror",
- "tokio",
- "uuid",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "wasm-bindgen-test",
- "wasm_evt_listener",
- "web-sys",
- "web-time",
-]
-
-[[package]]
-name = "indexed_db_futures_macros_internal"
-version = "1.0.0"
-dependencies = [
- "macroific",
- "proc-macro2",
- "quote",
- "syn 2.0.100",
-]
-
-[[package]]
 name = "itoa"
 version = "1.0.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -397,6 +355,48 @@ checksum = "4da6f2ed796261b0a74e2b52b42c693bb6dee1effba3a482c49592659f824b3b"
 dependencies = [
  "macroific_attr_parse",
  "macroific_core",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.100",
+]
+
+[[package]]
+name = "matrix_indexed_db_futures"
+version = "0.7.0"
+dependencies = [
+ "accessory",
+ "cfg-if",
+ "console_log",
+ "delegate-display",
+ "derive_more 2.0.1",
+ "fancy_constructor",
+ "futures",
+ "futures-core",
+ "impartial-ord",
+ "js-sys",
+ "log",
+ "matrix_indexed_db_futures_macros_internal",
+ "rand",
+ "sealed",
+ "serde",
+ "serde-wasm-bindgen",
+ "smallvec",
+ "thiserror",
+ "tokio",
+ "uuid",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "wasm-bindgen-test",
+ "wasm_evt_listener",
+ "web-sys",
+ "web-time",
+]
+
+[[package]]
+name = "matrix_indexed_db_futures_macros_internal"
+version = "1.0.0"
+dependencies = [
+ "macroific",
  "proc-macro2",
  "quote",
  "syn 2.0.100",

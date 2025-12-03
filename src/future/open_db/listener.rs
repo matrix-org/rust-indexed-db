@@ -112,7 +112,7 @@ impl OpenDbListener {
 
     fn create_error<L: Display, E: Display>(label: L, error: E) -> js_sys::Error {
         let msg = format!(
-            "An error occurred during an `indexed_db_futures` `{label} event handler: {error}"
+            "An error occurred during an `matrix_indexed_db_futures` `{label} event handler: {error}"
         );
         js_sys::Error::new(&msg)
     }

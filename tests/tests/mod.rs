@@ -5,8 +5,8 @@ macro_rules! assert_dom_exc {
         let err = $err;
         let m = matches!(
             err,
-            ::indexed_db_futures::error::Error::DomException(
-                ::indexed_db_futures::error::DomException::$dom_exc(_)
+            ::matrix_indexed_db_futures::error::Error::DomException(
+                ::matrix_indexed_db_futures::error::DomException::$dom_exc(_)
             )
         );
         assert!(m, "{err:?}")
@@ -15,9 +15,9 @@ macro_rules! assert_dom_exc {
         let err = $err;
         let m = matches!(
             err,
-            ::indexed_db_futures::error::OpenDbError::Base(
-                ::indexed_db_futures::error::Error::DomException(
-                    ::indexed_db_futures::error::DomException::$dom_exc(_)
+            ::matrix_indexed_db_futures::error::OpenDbError::Base(
+                ::matrix_indexed_db_futures::error::Error::DomException(
+                    ::matrix_indexed_db_futures::error::DomException::$dom_exc(_)
                 )
             )
         );
@@ -27,8 +27,8 @@ macro_rules! assert_dom_exc {
 
 macro_rules! open_tx {
     ($db: expr, $mode: ident > ($tx: ident, $store: ident named $store_name: expr)) => {
-        let $tx = ::indexed_db_futures::Build::build(
-            $db.transaction(&$db.name()).with_mode(::indexed_db_futures::transaction::TransactionMode::$mode)
+        let $tx = ::matrix_indexed_db_futures::Build::build(
+            $db.transaction(&$db.name()).with_mode(::matrix_indexed_db_futures::transaction::TransactionMode::$mode)
         ).expect("tx build");
         let $store = $tx.object_store($store_name).expect("object_store()");
     };
@@ -174,7 +174,7 @@ pub mod prelude {
     pub use idb_fut::database::VersionChangeEvent;
     pub use idb_fut::prelude::*;
     pub use idb_fut::primitive::{TryFromJs, TryToJs};
-    pub use indexed_db_futures as idb_fut;
+    pub use matrix_indexed_db_futures as idb_fut;
     pub use wasm_bindgen::prelude::*;
     pub use wasm_bindgen_test::wasm_bindgen_test;
 

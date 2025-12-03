@@ -6,14 +6,14 @@ members = [
 ]
 
 [package]
-name = "indexed_db_futures"
-version = "0.6.4"
-authors = ["Arturas Molcanovas <amolc@pm.me>"]
+name = "matrix_indexed_db_futures"
+version = "0.7.0"
+authors = ["Arturas Molcanovas <amolc@pm.me>", "Ivan Enderlin <ivan@mnt.io>"]
 edition = "2021"
 rust-version = "1.85.0"
 license = "MIT"
-description = "Future bindings for IndexedDB via web_sys"
-repository = "https://github.com/Alorel/rust-indexed-db"
+description = "A fork of `indexed_db_futures` — Future bindings for IndexedDB via `web_sys`"
+repository = "https://github.com/matrix-org/rust-indexed-db"
 keywords = ["wasm", "indexeddb", "future", "webassembly", "idb"]
 categories = ["asynchronous", "database", "wasm", "web-programming"]
 include = [
@@ -114,7 +114,7 @@ web-time = { workspace = true, optional = true }
 
 [dependencies.internal_macros]
 version = "1"
-package = "indexed_db_futures_macros_internal"
+package = "matrix_indexed_db_futures_macros_internal"
 path = "internal_macros"
 
 [dependencies.web-sys]

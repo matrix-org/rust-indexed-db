@@ -1,6 +1,6 @@
 use crate::prelude::*;
 use idb_fut::database::{Database, VersionChangeEvent};
-use indexed_db_futures::transaction::Transaction;
+use matrix_indexed_db_futures::transaction::Transaction;
 
 pub async fn random_db_with_init<F>(on_upgrade_needed: F) -> Database
 where

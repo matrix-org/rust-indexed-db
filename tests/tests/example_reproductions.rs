@@ -5,11 +5,11 @@ use wasm_bindgen_test::wasm_bindgen_test;
 
 #[wasm_bindgen_test]
 pub async fn multi_threaded_executor() {
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
 
-    async fn exec_example(db: Database) -> indexed_db_futures::Result<()> {
+    async fn exec_example(db: Database) -> matrix_indexed_db_futures::Result<()> {
         let transaction = db
             .transaction("my_store")
             .with_mode(TransactionMode::Readwrite)
@@ -44,9 +44,9 @@ pub async fn multi_threaded_executor() {
 #[wasm_bindgen_test]
 #[cfg(all(feature = "tx-done", feature = "async-upgrade"))]
 pub async fn opening_a_database_and_making_some_schema_changes() {
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
 
     let _ = Database::open("opening_a_database_and_making_some_schema_changes")
         .with_version(2u8)
@@ -99,9 +99,9 @@ pub async fn opening_a_database_and_making_some_schema_changes() {
 #[wasm_bindgen_test]
 #[cfg(feature = "serde")]
 pub async fn rw_serde() {
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
     use serde::{Deserialize, Serialize};
 
     #[derive(Serialize, Deserialize)]
@@ -152,12 +152,12 @@ pub async fn rw_serde() {
 #[wasm_bindgen_test]
 #[cfg(all(feature = "serde", feature = "cursors"))]
 pub async fn readme_example() {
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
     use serde::{Deserialize, Serialize};
 
-    async fn main() -> indexed_db_futures::OpenDbResult<()> {
+    async fn main() -> matrix_indexed_db_futures::OpenDbResult<()> {
         let db = Database::open("my_db_readme_example")
             .with_version(2u8)
             .with_on_upgrade_needed(|event, tx| {
@@ -258,9 +258,9 @@ pub async fn readme_example() {
 #[wasm_bindgen_test]
 #[cfg(feature = "cursors")]
 pub async fn iterating_a_cursor() {
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
 
     let db = Database::open("example_iterating_a_cursor")
         .with_version(2u8)
@@ -320,9 +320,9 @@ pub async fn iterating_a_cursor() {
 ))]
 pub async fn iterating_index_as_a_stream() {
     use futures::TryStreamExt;
-    use indexed_db_futures::database::Database;
-    use indexed_db_futures::prelude::*;
-    use indexed_db_futures::transaction::TransactionMode;
+    use matrix_indexed_db_futures::database::Database;
+    use matrix_indexed_db_futures::prelude::*;
+    use matrix_indexed_db_futures::transaction::TransactionMode;
     use serde::{Deserialize, Serialize};
 
     #[derive(Serialize, Deserialize, Ord, PartialOrd, Eq, PartialEq, Debug)]

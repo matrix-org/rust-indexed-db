@@ -2,9 +2,9 @@
 //! removes the pain of dealing with JS callbacks or `JSValue` in Rust.
 //!
 //! [![master CI badge](https://github.com/Alorel/rust-indexed-db/actions/workflows/test.yml/badge.svg)](https://github.com/Alorel/rust-indexed-db/actions/workflows/test.yml)
-//! [![crates.io badge](https://img.shields.io/crates/v/indexed_db_futures)](https://crates.io/crates/indexed_db_futures)
-//! [![docs.rs badge](https://img.shields.io/docsrs/indexed_db_futures?label=docs.rs)](https://docs.rs/indexed_db_futures)
-//! [![dependencies badge](https://img.shields.io/librariesio/release/cargo/indexed_db_futures)](https://libraries.io/cargo/indexed_db_futures)
+//! [![crates.io badge](https://img.shields.io/crates/v/matrix_indexed_db_futures)](https://crates.io/crates/matrix_indexed_db_futures)
+//! [![docs.rs badge](https://img.shields.io/docsrs/matrix_indexed_db_futures?label=docs.rs)](https://docs.rs/matrix_indexed_db_futures)
+//! [![dependencies badge](https://img.shields.io/librariesio/release/cargo/matrix_indexed_db_futures)](https://libraries.io/cargo/matrix_indexed_db_futures)
 //!
 
 //! # Overall API design
@@ -53,10 +53,10 @@
 //! after being built, not after being polled).
 //!
 //! ```
-//! # use indexed_db_futures::prelude::*;
-//! # use indexed_db_futures::transaction::TransactionMode;
+//! # use matrix_indexed_db_futures::prelude::*;
+//! # use matrix_indexed_db_futures::transaction::TransactionMode;
 //! #
-//! # async fn example(db: indexed_db_futures::database::Database) -> indexed_db_futures::Result<()> {
+//! # async fn example(db: matrix_indexed_db_futures::database::Database) -> matrix_indexed_db_futures::Result<()> {
 //! let transaction = db.transaction("my_store").with_mode(TransactionMode::Readwrite).build()?;
 //! let object_store = transaction.object_store("my_store")?;
 //!
@@ -80,11 +80,11 @@
 //! ## Opening a database & making some schema changes
 //!
 //! ```
-//! use indexed_db_futures::database::{Database, VersionChangeEvent};
-//! use indexed_db_futures::prelude::*;
-//! use indexed_db_futures::transaction::{Transaction, TransactionMode};
+//! use matrix_indexed_db_futures::database::{Database, VersionChangeEvent};
+//! use matrix_indexed_db_futures::prelude::*;
+//! use matrix_indexed_db_futures::transaction::{Transaction, TransactionMode};
 //!
-//! # async fn example() -> indexed_db_futures::OpenDbResult<()> {
+//! # async fn example() -> matrix_indexed_db_futures::OpenDbResult<()> {
 //! # #[allow(dead_code)]
 //! # #[cfg(all(feature = "async-upgrade", feature = "tx-done"))]
 //! let db = Database::open("my_db")
@@ -145,8 +145,8 @@
 //! ```
 //! # #[cfg(feature = "serde")]
 //! # mod wrapper {
-//! # use indexed_db_futures::object_store::ObjectStore;
-//! # use indexed_db_futures::prelude::*;
+//! # use matrix_indexed_db_futures::object_store::ObjectStore;
+//! # use matrix_indexed_db_futures::prelude::*;
 //! # use serde::{Deserialize, Serialize};
 //! #
 //! #[derive(Serialize, Deserialize)]
@@ -156,7 +156,7 @@
 //! }
 //!
 //! # #[allow(dead_code)]
-//! # async fn example(object_store: ObjectStore<'_>) -> indexed_db_futures::Result<()> {
+//! # async fn example(object_store: ObjectStore<'_>) -> matrix_indexed_db_futures::Result<()> {
 //! object_store.put(UserRef { id: 1, name: "Bobby Tables".into() }).serde()?.await?;
 //! let user: Option<UserRef> = object_store.get(1u32).serde()?.await?;
 //! # Ok(())
@@ -167,12 +167,12 @@
 //! # Iterating a cursor
 //!
 //! ```
-//! # use indexed_db_futures::object_store::ObjectStore;
-//! # use indexed_db_futures::prelude::*;
+//! # use matrix_indexed_db_futures::object_store::ObjectStore;
+//! # use matrix_indexed_db_futures::prelude::*;
 //! #
 //! # #[allow(dead_code)]
 //! # #[cfg(feature = "cursors")]
-//! # async fn example(object_store: ObjectStore<'_>) -> indexed_db_futures::Result<()> {
+//! # async fn example(object_store: ObjectStore<'_>) -> matrix_indexed_db_futures::Result<()> {
 //! let Some(mut cursor) = object_store.open_cursor().await? else {
 //!   log::debug!("Cursor empty");
 //!   return Ok(());
@@ -189,8 +189,8 @@
 //! ```
 //! # #[cfg(all(feature = "serde", feature = "indices", feature = "cursors", feature = "streams"))]
 //! # mod wrapper {
-//! # use indexed_db_futures::object_store::ObjectStore;
-//! # use indexed_db_futures::prelude::*;
+//! # use matrix_indexed_db_futures::object_store::ObjectStore;
+//! # use matrix_indexed_db_futures::prelude::*;
 //! # use serde::{Deserialize, Serialize};
 //! use futures::TryStreamExt;
 //! #
@@ -201,7 +201,7 @@
 //! # }
 //!
 //! # #[allow(dead_code)]
-//! # async fn example(object_store: ObjectStore<'_>) -> indexed_db_futures::Result<()> {
+//! # async fn example(object_store: ObjectStore<'_>) -> matrix_indexed_db_futures::Result<()> {
 //! let index = object_store.index("my_index")?;
 //! let Some(cursor) = index.open_cursor().with_query(10u32..=100u32).serde()?.await? else {
 //!   log::debug!("Cursor empty");
